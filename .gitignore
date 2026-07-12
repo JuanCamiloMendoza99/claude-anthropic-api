@@ -1,0 +1,25 @@
+# ---- Secrets ----
+# Never commit real credentials. Copy .env.example to .env and add your key there.
+.env
+.env.*
+!.env.example
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.ipython/
+
+# ---- Jupyter ----
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# ---- OS / editor / tooling noise ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.claude/settings.local.json
