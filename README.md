@@ -20,6 +20,8 @@ the API — from basic requests to system prompts, streaming, and output control
 | 004 | [`004_streaming.ipynb`](004_streaming.ipynb) | Receiving tokens incrementally as they are generated | `stream=True` · `messages.stream` |
 | 005 | [`005_controlling_output.ipynb`](005_controlling_output.ipynb) | Cutting generation short at a marker | `stop_sequences` parameter |
 | 006 | [`006_prompt_evals.ipynb`](006_prompt_evals.ipynb) | Building an eval loop: generate a dataset, run prompts, grade with an LLM judge and syntax checks | Prompt evaluation · model grading + code validation |
+| 007 | [`007_prompting.ipynb`](007_prompting.ipynb) | Structured prompt design — role, guidelines, XML-tagged inputs, and a few-shot example — evaluated end to end | Prompt engineering · eval loop |
+| 008 | [`008_prompting_exercise.ipynb`](008_prompting_exercise.ipynb) | Applying the eval workflow to a topic-extraction task graded on JSON-shape criteria | Prompt engineering · exercise |
 
 Each notebook reuses a small set of helpers (`add_user_message`,
 `add_assistant_message`, `chat`) so the focus stays on the one feature it introduces.
@@ -31,7 +33,7 @@ progress — completed topics are checked off, upcoming ones are listed so the p
 visible.
 
 - [x] **API fundamentals** — requests, system prompts, temperature, streaming, output control (`001`–`005`)
-- [x] **Prompt engineering & evaluation** — writing, testing, and grading prompts (`006`)
+- [x] **Prompt engineering & evaluation** — writing, testing, and grading prompts (`006`–`008`)
 - [ ] **Tool use** — letting Claude call external functions and tools
 - [ ] **Retrieval (RAG)** — grounding answers in your own documents
 - [ ] **Agentic workflows** — chaining, parallelization, and routing patterns
