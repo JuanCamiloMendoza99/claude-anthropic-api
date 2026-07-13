@@ -19,6 +19,7 @@ the API — from basic requests to system prompts, streaming, and output control
 | 003 | [`003_temperature.ipynb`](003_temperature.ipynb) | Controlling how deterministic vs. creative responses are | `temperature` parameter |
 | 004 | [`004_streaming.ipynb`](004_streaming.ipynb) | Receiving tokens incrementally as they are generated | `stream=True` · `messages.stream` |
 | 005 | [`005_controlling_output.ipynb`](005_controlling_output.ipynb) | Cutting generation short at a marker | `stop_sequences` parameter |
+| 006 | [`006_prompt_evals.ipynb`](006_prompt_evals.ipynb) | Building an eval loop: generate a dataset, run prompts, grade with an LLM judge and syntax checks | Prompt evaluation · model grading + code validation |
 
 Each notebook reuses a small set of helpers (`add_user_message`,
 `add_assistant_message`, `chat`) so the focus stays on the one feature it introduces.
@@ -30,7 +31,7 @@ progress — completed topics are checked off, upcoming ones are listed so the p
 visible.
 
 - [x] **API fundamentals** — requests, system prompts, temperature, streaming, output control (`001`–`005`)
-- [ ] **Prompt engineering & evaluation** — writing, testing, and grading prompts
+- [x] **Prompt engineering & evaluation** — writing, testing, and grading prompts (`006`)
 - [ ] **Tool use** — letting Claude call external functions and tools
 - [ ] **Retrieval (RAG)** — grounding answers in your own documents
 - [ ] **Agentic workflows** — chaining, parallelization, and routing patterns
@@ -73,6 +74,8 @@ ever appears in the code.
 - **Sampling controls** with the `temperature` parameter
 - **Streaming** responses token by token, including inspecting raw stream events
 - **Output control** with `stop_sequences`
+- **Prompt evaluation** — generating a test dataset and scoring prompt outputs with both an
+  LLM-as-judge and programmatic syntax validation (JSON, Python, regex)
 - Practical hygiene: environment-based secrets (`python-dotenv`), a clean
   `.gitignore`, pinned dependencies, and readable, reusable helper functions
 

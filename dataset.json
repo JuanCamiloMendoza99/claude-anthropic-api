@@ -1,0 +1,17 @@
+[
+  {
+    "task": "Parse an AWS S3 bucket name from an S3 URI and extract just the bucket name",
+    "format": "regex",
+    "solution_criteria": "The regex should correctly extract bucket names from S3 URIs like 's3://my-bucket/path/to/file' or 'arn:aws:s3:::my-bucket', handling hyphens and numbers, and should not match invalid characters"
+  },
+  {
+    "task": "Create a JSON object representing an AWS IAM policy that allows read-only access to a specific DynamoDB table",
+    "format": "json",
+    "solution_criteria": "The JSON should follow AWS IAM policy structure with correct Effect, Action, and Resource fields, include appropriate DynamoDB read actions (GetItem, Query, Scan), and use proper ARN format for the table resource"
+  },
+  {
+    "task": "Write a Python function that validates whether a string is a valid AWS region identifier",
+    "format": "python",
+    "solution_criteria": "The function should return True for valid AWS regions (e.g., 'us-east-1', 'eu-west-1') and False for invalid ones, handle edge cases like uppercase letters, and work with standard AWS region naming conventions"
+  }
+]
