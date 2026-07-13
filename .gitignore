@@ -17,6 +17,13 @@ env/
 .ipynb_checkpoints/
 */.ipynb_checkpoints/*
 
+# ---- Generated eval artifacts ----
+# The prompt-eval notebooks (006-008) regenerate these on every run, so they are
+# transient outputs rather than source. Keep them out of version control.
+dataset.json
+output.json
+output.html
+
 # ---- OS / editor / tooling noise ----
 .DS_Store
 Thumbs.db
