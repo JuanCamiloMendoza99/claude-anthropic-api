@@ -24,6 +24,11 @@ dataset.json
 output.json
 output.html
 
+# ---- Text editor tool sandbox (011) ----
+# Claude creates and edits files here when running the text editor notebook,
+# so its contents are regenerated on every run.
+editor_workspace/
+
 # ---- OS / editor / tooling noise ----
 .DS_Store
 Thumbs.db
