@@ -12,7 +12,7 @@ the API — from basic requests to system prompts, streaming, and output control
 
 ## What's inside
 
-| # | Notebook | Demonstrates | Claude API feature |
+| # | Notebook | Demonstrates | API feature / concept |
 | --- | --- | --- | --- |
 | 001 | [`001_requests.ipynb`](001_requests.ipynb) | Building a multi-turn conversation and a simple chat loop | Messages API · `messages.create` |
 | 002 | [`002_system_prompt.ipynb`](002_system_prompt.ipynb) | Steering Claude's role and behavior with a system prompt | `system` parameter |
@@ -26,6 +26,11 @@ the API — from basic requests to system prompts, streaming, and output control
 | 010 | [`010_tool_streaming.ipynb`](010_tool_streaming.ipynb) | Streaming tool calls and watching tool inputs arrive fragment by fragment | Fine-grained tool streaming · `eager_input_streaming` |
 | 011 | [`011_text_editor_tool.ipynb`](011_text_editor_tool.ipynb) | Implementing the Anthropic-defined text editor tool client-side, with path sandboxing and backups | `text_editor_20250728` · client tools |
 | 012 | [`012_web_search.ipynb`](012_web_search.ipynb) | Letting Claude search the web and answer with cited sources | `web_search_20260318` · server tools |
+| 013 | [`013_chunking.ipynb`](013_chunking.ipynb) | Comparing chunking strategies — by characters, sentences, and document sections | RAG · text chunking |
+| 014 | [`014_embeddings.ipynb`](014_embeddings.ipynb) | Generating text embeddings and ranking chunks by cosine similarity | Voyage AI · `voyage-4` · `input_type` |
+| 015 | [`015_vectordb.ipynb`](015_vectordb.ipynb) | Building an in-memory vector database with brute-force cosine search | RAG · semantic search |
+| 016 | [`016_bm25.ipynb`](016_bm25.ipynb) | Implementing BM25 lexical search from scratch — TF, IDF, and length normalization | RAG · keyword search |
+| 017 | [`017_hybrid.ipynb`](017_hybrid.ipynb) | Merging semantic and lexical rankings with Reciprocal Rank Fusion | RAG · hybrid search · RRF |
 
 Each notebook reuses a small set of helpers (`add_user_message`,
 `add_assistant_message`, `chat`) so the focus stays on the one feature it introduces.
@@ -39,7 +44,7 @@ visible.
 - [x] **API fundamentals** — requests, system prompts, temperature, streaming, output control (`001`–`005`)
 - [x] **Prompt engineering & evaluation** — writing, testing, and grading prompts (`006`–`008`)
 - [x] **Tool use** — letting Claude call external functions and tools (`009`–`012`)
-- [ ] **Retrieval (RAG)** — grounding answers in your own documents
+- [x] **Retrieval (RAG)** — chunking, embeddings, vector search, BM25, and hybrid retrieval (`013`–`017`)
 - [ ] **Agentic workflows** — chaining, parallelization, and routing patterns
 
 ## Setup
@@ -56,11 +61,13 @@ source venv/bin/activate        # Windows: venv\Scripts\activate
 # 3. Install dependencies
 pip install -r requirements.txt
 
-# 4. Add your Anthropic API key
-cp .env.example .env            # then edit .env and paste your key
+# 4. Add your API keys
+cp .env.example .env            # then edit .env and paste your keys
 ```
 
-Get an API key at <https://console.anthropic.com/settings/keys>.
+Get an Anthropic API key at <https://console.anthropic.com/settings/keys>. The RAG
+notebooks (`013`+) also use a [Voyage AI](https://dashboard.voyageai.com/) key for
+embeddings, since Anthropic recommends Voyage as its embeddings provider.
 
 ## Running the notebooks
 
@@ -91,6 +98,11 @@ ever appears in the code.
   directory-sandboxed path validation and pre-edit backups
 - **Server tools** — web search with domain-use caps, response block inspection, and
   cited sources
+- **Retrieval (RAG) building blocks** — chunking strategies (character, sentence, and
+  section-based); **Voyage AI embeddings** (`voyage-4`) with retrieval-tuned
+  `input_type` prompts for documents vs. queries and batched requests; a from-scratch
+  in-memory **vector index** (cosine distance); **BM25** lexical scoring; and
+  **hybrid search** that fuses both rankings with Reciprocal Rank Fusion
 - Practical hygiene: environment-based secrets (`python-dotenv`), a clean
   `.gitignore`, pinned dependencies, and readable, reusable helper functions
 
