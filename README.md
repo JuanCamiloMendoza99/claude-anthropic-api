@@ -22,6 +22,10 @@ the API — from basic requests to system prompts, streaming, and output control
 | 006 | [`006_prompt_evals.ipynb`](006_prompt_evals.ipynb) | Building an eval loop: generate a dataset, run prompts, grade with an LLM judge and syntax checks | Prompt evaluation · model grading + code validation |
 | 007 | [`007_prompting.ipynb`](007_prompting.ipynb) | Structured prompt design — role, guidelines, XML-tagged inputs, and a few-shot example — evaluated end to end | Prompt engineering · eval loop |
 | 008 | [`008_prompting_exercise.ipynb`](008_prompting_exercise.ipynb) | Applying the eval workflow to a topic-extraction task graded on JSON-shape criteria | Prompt engineering · exercise |
+| 009 | [`009_tools.ipynb`](009_tools.ipynb) | Defining custom tools and running the agentic loop — parallel calls, matched `tool_result` blocks, `is_error` recovery | Tool use · `tools` · `stop_reason: "tool_use"` |
+| 010 | [`010_tool_streaming.ipynb`](010_tool_streaming.ipynb) | Streaming tool calls and watching tool inputs arrive fragment by fragment | Fine-grained tool streaming · `eager_input_streaming` |
+| 011 | [`011_text_editor_tool.ipynb`](011_text_editor_tool.ipynb) | Implementing the Anthropic-defined text editor tool client-side, with path sandboxing and backups | `text_editor_20250728` · client tools |
+| 012 | [`012_web_search.ipynb`](012_web_search.ipynb) | Letting Claude search the web and answer with cited sources | `web_search_20260318` · server tools |
 
 Each notebook reuses a small set of helpers (`add_user_message`,
 `add_assistant_message`, `chat`) so the focus stays on the one feature it introduces.
@@ -34,7 +38,7 @@ visible.
 
 - [x] **API fundamentals** — requests, system prompts, temperature, streaming, output control (`001`–`005`)
 - [x] **Prompt engineering & evaluation** — writing, testing, and grading prompts (`006`–`008`)
-- [ ] **Tool use** — letting Claude call external functions and tools
+- [x] **Tool use** — letting Claude call external functions and tools (`009`–`012`)
 - [ ] **Retrieval (RAG)** — grounding answers in your own documents
 - [ ] **Agentic workflows** — chaining, parallelization, and routing patterns
 
@@ -78,6 +82,15 @@ ever appears in the code.
 - **Output control** with `stop_sequences`
 - **Prompt evaluation** — generating a test dataset and scoring prompt outputs with both an
   LLM-as-judge and programmatic syntax validation (JSON, Python, regex)
+- **Tool use** — defining custom tools with JSON Schemas and running the agentic loop:
+  executing parallel tool calls, returning matched `tool_result` blocks, and reporting
+  failures with `is_error` so Claude can recover
+- **Tool streaming** — fine-grained input streaming (`eager_input_streaming`) to receive
+  large tool arguments incrementally as Claude generates them
+- **Anthropic-defined client tools** — a `text_editor_20250728` implementation with
+  directory-sandboxed path validation and pre-edit backups
+- **Server tools** — web search with domain-use caps, response block inspection, and
+  cited sources
 - Practical hygiene: environment-based secrets (`python-dotenv`), a clean
   `.gitignore`, pinned dependencies, and readable, reusable helper functions
 
