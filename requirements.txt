@@ -2,6 +2,7 @@
 # Install with:  pip install -r requirements.txt
 
 anthropic>=0.40      # Official Anthropic Python SDK (Messages API)
-python-dotenv>=1.0   # Loads the ANTHROPIC_API_KEY from the local .env file
+voyageai>=0.5        # Voyage AI embeddings SDK, used by the RAG notebooks (013+)
+python-dotenv>=1.0   # Loads the API keys from the local .env file
 jupyter>=1.0         # Runs the .ipynb notebooks (JupyterLab / Notebook)
 ipykernel>=6.29      # Jupyter kernel used to execute the notebooks
