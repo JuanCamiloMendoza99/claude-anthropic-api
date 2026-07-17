@@ -31,6 +31,10 @@ the API — from basic requests to system prompts, streaming, and output control
 | 015 | [`015_vectordb.ipynb`](015_vectordb.ipynb) | Building an in-memory vector database with brute-force cosine search | RAG · semantic search |
 | 016 | [`016_bm25.ipynb`](016_bm25.ipynb) | Implementing BM25 lexical search from scratch — TF, IDF, and length normalization | RAG · keyword search |
 | 017 | [`017_hybrid.ipynb`](017_hybrid.ipynb) | Merging semantic and lexical rankings with Reciprocal Rank Fusion | RAG · hybrid search · RRF |
+| 018 | [`018_thinking.ipynb`](018_thinking.ipynb) | Watching Claude reason with adaptive extended thinking and carrying thinking blocks across turns | Extended thinking · `thinking: {"type": "adaptive"}` |
+| 019 | [`019_images.ipynb`](019_images.ipynb) | Assessing wildfire risk from satellite images with a structured rubric | Vision · base64 `image` blocks |
+| 020 | [`020_pdf.ipynb`](020_pdf.ipynb) | Asking questions about a PDF and grounding the answers with page citations | PDF support · `document` blocks · citations |
+| 021 | [`021_caching.ipynb`](021_caching.ipynb) | Caching a large tools + system prefix and verifying cache hits in `usage` | Prompt caching · `cache_control` |
 
 Each notebook reuses a small set of helpers (`add_user_message`,
 `add_assistant_message`, `chat`) so the focus stays on the one feature it introduces.
@@ -45,6 +49,7 @@ visible.
 - [x] **Prompt engineering & evaluation** — writing, testing, and grading prompts (`006`–`008`)
 - [x] **Tool use** — letting Claude call external functions and tools (`009`–`012`)
 - [x] **Retrieval (RAG)** — chunking, embeddings, vector search, BM25, and hybrid retrieval (`013`–`017`)
+- [x] **Claude features** — extended thinking, vision, PDF input, and prompt caching (`018`–`021`)
 - [ ] **Agentic workflows** — chaining, parallelization, and routing patterns
 
 ## Setup
@@ -103,6 +108,16 @@ ever appears in the code.
   `input_type` prompts for documents vs. queries and batched requests; a from-scratch
   in-memory **vector index** (cosine distance); **BM25** lexical scoring; and
   **hybrid search** that fuses both rankings with Reciprocal Rank Fusion
+- **Extended thinking** — adaptive thinking with summarized `display`, per-message
+  steering, the billed `thinking_tokens` breakdown, and round-tripping signed
+  thinking blocks in multi-turn conversations
+- **Vision** — base64 `image` content blocks (image placed before the text prompt)
+  driving a structured satellite fire-risk assessment
+- **PDF input** — base64 `document` blocks with `citations` enabled, so answers come
+  back anchored to `page_location` citations in the source PDF
+- **Prompt caching** — `cache_control` breakpoints on tool definitions and the system
+  prompt, with cache writes and hits verified through `cache_creation_input_tokens`
+  and `cache_read_input_tokens`
 - Practical hygiene: environment-based secrets (`python-dotenv`), a clean
   `.gitignore`, pinned dependencies, and readable, reusable helper functions
 
