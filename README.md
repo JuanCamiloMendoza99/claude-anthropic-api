@@ -35,6 +35,7 @@ the API — from basic requests to system prompts, streaming, and output control
 | 019 | [`019_images.ipynb`](019_images.ipynb) | Assessing wildfire risk from satellite images with a structured rubric | Vision · base64 `image` blocks |
 | 020 | [`020_pdf.ipynb`](020_pdf.ipynb) | Asking questions about a PDF and grounding the answers with page citations | PDF support · `document` blocks · citations |
 | 021 | [`021_caching.ipynb`](021_caching.ipynb) | Caching a large tools + system prefix and verifying cache hits in `usage` | Prompt caching · `cache_control` |
+| 022 | [`022_code_execution.ipynb`](022_code_execution.ipynb) | Uploading a dataset and letting Claude analyze it — and build a chart — inside the sandboxed container | Code execution · `code_execution_20260120` · Files API |
 
 Each notebook reuses a small set of helpers (`add_user_message`,
 `add_assistant_message`, `chat`) so the focus stays on the one feature it introduces.
@@ -49,7 +50,7 @@ visible.
 - [x] **Prompt engineering & evaluation** — writing, testing, and grading prompts (`006`–`008`)
 - [x] **Tool use** — letting Claude call external functions and tools (`009`–`012`)
 - [x] **Retrieval (RAG)** — chunking, embeddings, vector search, BM25, and hybrid retrieval (`013`–`017`)
-- [x] **Claude features** — extended thinking, vision, PDF input, and prompt caching (`018`–`021`)
+- [x] **Claude features** — extended thinking, vision, PDF input, prompt caching, and code execution (`018`–`022`)
 - [ ] **Agentic workflows** — chaining, parallelization, and routing patterns
 
 ## Setup
@@ -118,6 +119,10 @@ ever appears in the code.
 - **Prompt caching** — `cache_control` breakpoints on tool definitions and the system
   prompt, with cache writes and hits verified through `cache_creation_input_tokens`
   and `cache_read_input_tokens`
+- **Code execution** — the sandboxed server tool (`code_execution_20260120`): uploading
+  a dataset via the Files API, referencing it with `container_upload` blocks, resuming
+  `pause_turn` responses, tracing `server_tool_use` blocks, and downloading generated
+  artifacts (see [`churn_analysis_dashboard.png`](churn_analysis_dashboard.png))
 - Practical hygiene: environment-based secrets (`python-dotenv`), a clean
   `.gitignore`, pinned dependencies, and readable, reusable helper functions
 
